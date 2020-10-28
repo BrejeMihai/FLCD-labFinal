@@ -1,0 +1,52 @@
+
+
+// description: performs the scanning process
+// pre: InputFilePath - path to a proper text file containing code
+// post: PIF.out, ST.out generated and "Lexically correct!" to stdout OR "Lexical error\nLine <x>, column <y>" to stdout 
+void StartScanning(char* InputFilePath);
+
+// description: checks if a token is a proper numerical value in this language (has no redundant zeroes at the front and contains only digits)
+// pre: Token - std::string 
+// post: true - if proper numerical value 
+//       false - if not proper numerical value 
+bool CheckIfProperNumericalValue(std::string Token);
+
+// description: checks if a token is a proper identifier in this language (doesn't start with digits or other special characters)
+// pre: Token - std::string 
+// post: true - if proper identifier
+//       false - if identifier is not respecting the language definition
+bool CheckIfProperIdentifier(std::string Token);
+
+// description: checks if a given token is a operator or separator
+// pre: Token - std::string 
+// post: true - if token is an operator or separator
+//       false - if token is not an operator or separator 
+bool IsSeparatorOrOperator(std::string Token);
+
+// description: checks if a given token is an expression (e.g 10-5)
+// pre: Token - std::string 
+// post: true - if token is an expression 
+//       false - if token is not an expression 
+bool CheckIfExpression(std::string Token);
+
+// description: checks if a given token is a const char 
+// pre: Token - std::string 
+// post: true - if token is a const char 
+//       false - if token not a const char 
+bool CheckIfConstChar(std::string Token)
+ 
+// description: checks if a given token is a const string 
+// pre: Token - std::string 
+// post: true - if token is a const string 
+//       false - if token not a const string 
+bool CheckIfConstString(std::string Token)
+
+// description: takes a string, checks if it's concatenated list of tokens and splits it properly (to handle cases like: while(expression) )
+// pre: Token - std::string 
+//      fileLine - std::string line read from the file
+//      numberOfLines - int the number of lines already read from the file 
+//      tokenList - std::vector<std::pair<std::string, std::pair<int,int>>> already created 
+// post: true - if any split done, and the list of tokens pushed in the tokenList vector along with the position in the file and in the line 
+//       false - if no split done 
+bool SplitTokenRead(std::string Token, std::string fileLine, int numberOfLines, std::vector<std::pair<std::string, std::pair<int,int>>>& tokenList);
+
